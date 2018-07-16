@@ -1,0 +1,48 @@
+<div class="login-container container-fluid">
+  <div class="row">
+    <section class="col-sm-6 align-self-center">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-7">
+          <img class="login-logo" src="assets/images/login/logo.png" alt="">
+
+          <h4>Forgot your password ?</h4>
+          <p>Don't worry, we are happy to help you!</p>
+
+          <br>
+        
+          <form (ngSubmit)="verifyEmail()" novalidate [formGroup]="verifyEmailForm">
+            <section class="form-group">
+              <label class="form-label" for="emailControl">Enter your registered email *</label>
+              <input type="text" id="emailControl" placeholder="e.g. someone@somedomain" formControlName="email" class="form-control " />
+              <div *ngIf="verifyEmailForm.get('email')?.invalid && (verifyEmailForm.get('email')?.touched || verifyEmailForm.get('email')?.dirty)">
+                <span *ngIf="verifyEmailForm.get('email')?.hasError('required')" class="err-msg">Please enter email</span>
+                <span *ngIf="verifyEmailForm.get('email')?.hasError('invalid')" class="err-msg">Please enter valid email</span>
+              </div>
+            </section>
+            
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-paimary-gradient btn-block">Submit</button>
+            </div>
+            <div class="text-center">
+              Don't have an account ?
+              <a (click)="navigateTo($event, 'registration')" href="#" class="link">Create</a>
+            </div>
+            <div class="text-center">
+              Or
+            </div>
+            <div class="text-center">
+              Already have an account ?
+              <a (click)="navigateTo($event, 'login')" href="#" class="link">Login here</a>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+    <section class="col-sm-6 align-self-center" id="right-bg">
+      <img src="assets/images/login/forgot_password.jpg" alt="">
+    </section>
+  </div>
+</div>

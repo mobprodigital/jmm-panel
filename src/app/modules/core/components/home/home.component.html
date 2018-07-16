@@ -1,0 +1,70 @@
+<mat-toolbar class="container-fluid" color="primary">
+  <mat-toolbar-row>
+    <span class="">JMM Panel</span>
+    <button type="button" mat-icon-button (click)="drawer.toggle()">
+      <i class="fas fa-bars"></i>
+    </button>
+    <span class="toolbar-saparator"></span>
+    <span class="">
+      <button [matMenuTriggerFor]="userNotifications" mat-button>
+        <i class="far fa-bell"></i> Notifications</button>
+      <mat-menu #userNotifications="matMenu">
+        <button mat-menu-item>Notification 1</button>
+        <button mat-menu-item>Notification 2</button>
+        <button mat-menu-item>Notification 3</button>
+        <button mat-menu-item>See All Notification</button>
+      </mat-menu>
+      <button mat-button>
+        <i class="fas fa-cog"></i> Customize</button>
+      <button mat-button>
+        <i class="fas fa-server"></i> Integrations</button>
+      <button mat-button [matMenuTriggerFor]="userOptions">
+        <i class="fas fa-caret-down"></i> Gyan Parkash</button>
+      <mat-menu #userOptions="matMenu">
+        <button mat-menu-item>
+          <i class="fas fa-user-tie"></i> Profile</button>
+        <button mat-menu-item>
+          <i class="fas fa-users"></i> Team Members</button>
+        <button mat-menu-item>
+          <i class="fas fa-database"></i> Data Audit Log</button>
+        <button mat-menu-item>
+          <i class="fas fa-sign-out-alt"></i> Logout</button>
+      </mat-menu>
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-drawer-container autosize>
+  <mat-drawer opened #drawer mode="side">
+    <aside class="main-side-nav">
+      <header class="side-nav-header">
+        Gyan Parkash
+      </header>
+      <section class="side-nav-main">
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let nav of navItemList">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{nav.NavGroupName}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <section>
+              <ul class="main-menu-group">
+                <li *ngFor="let navItem of nav.NavItems">
+                    <a class="main-menu-item" routerLink="/{{navItem.Href}}" routerLinkActive="active">{{navItem.Text}}</a>
+                </li>
+              </ul>
+            </section>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </section>
+    </aside>
+
+  </mat-drawer>
+
+  <div class="sidenav-content">
+    <main class="page-content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+</mat-drawer-container>

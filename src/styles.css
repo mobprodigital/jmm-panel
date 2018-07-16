@@ -1,0 +1,88 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+body {
+  padding: 0;
+  margin: 0;
+}
+
+label.form-label {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.btn.btn-paimary-gradient {
+  background: linear-gradient(to right, #a09df8, #328ee6);
+}
+
+.mat-checkbox-layout .mat-checkbox-label {
+  font-size: 14px;
+}
+
+a.link {
+  color: black;
+  font-size: 14px;
+}
+
+.err-msg {
+  color: red;
+  font-size: 12px;
+}
+
+/* dashboard */
+
+.dash-card {
+  padding: 13px 17px;
+}
+
+.bg-grad-danger {
+  background: linear-gradient(to top, #fd7d96, #fea196);
+}
+
+.bg-gradient-info {
+  background: linear-gradient(to right, #da9bf5, #b459ff);
+}
+
+.bg-gradient-warning {
+  background: linear-gradient(to right, #fad961, #f99b44)
+}
+
+.bg-gradient-success {
+  background: linear-gradient(to right, #74cf98, #0cc896)
+}
+
+.dash-title {
+  font-size: 20px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.dash-data {
+  text-align: center;
+}
+
+.dash-data>span {
+  display: block;
+  width: 100%;
+  text-align: left;
+  color: #fff;
+}
+
+.dash-icon {
+  font-size: 43px;
+  color: #fff;
+}
+
+.dash-body {
+  margin: 20px 0px;
+}
+
+.dash-val {
+  font-size: 26px;
+  font-weight: 100;
+  text-shadow: 1px 1px 2px grey;
+}
+
+.toolbar-saparator{
+  flex: 1 1 auto;
+}

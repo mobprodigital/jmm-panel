@@ -1,0 +1,22 @@
+.login-container {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    background-color: #f1f2f7;
+  }
+  
+  .login-container>.row {
+      height: 100%;
+  }
+  
+  section#right-bg > img {
+      width: 100%;
+      margin-top: calc(29%);
+  }
+  section#right-bg {
+      background-color: #c7baff;
+      height: 100%;
+  }
+  img.login-logo {
+      margin-bottom: 15px;
+  }

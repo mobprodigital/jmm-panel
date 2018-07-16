@@ -1,0 +1,54 @@
+<div class="login-container container-fluid">
+  <div class="row">
+    <section class="col-sm-6 align-self-center">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-7">
+          <img class="login-logo" src="assets/images/login/logo.png" alt="">
+
+          <h4>Welcome Back!</h4>
+          <p>Happy to see you again!</p>
+
+          <br>
+        
+          <form (ngSubmit)="userLogin()" novalidate [formGroup]="loginFormGroup">
+            <section class="form-group">
+              <label class="form-label" for="usernameControl">Username</label>
+              <input type="text" id="usernameControl" placeholder="Username" formControlName="username" class="form-control " />
+              <div *ngIf="loginFormGroup.get('username')?.invalid && (loginFormGroup.get('username')?.touched || loginFormGroup.get('username')?.dirty)">
+                <span class="err-msg">Please enter username</span>
+              </div>
+            </section>
+            <section class="form-group">
+              <label class="form-label" for="passwordControl">Password</label>
+              <input type="password" id="passwordControl" placeholder="Password" formControlName="password" class="form-control " />
+              <div *ngIf="loginFormGroup.get('password')?.invalid && (loginFormGroup.get('password')?.touched || loginFormGroup.get('password')?.dirty)">
+                  <span class="err-msg">Please enter password</span>
+                </div>
+            </section>
+
+            <section class="form-group row">
+              <div class="col">
+                <mat-checkbox color="primary" >Keep me logged in</mat-checkbox>
+              </div>
+              <div class="col text-right">
+                <a href="#" (click)="navigateTo($event, 'verify-email')" class="link">Forgot password</a>
+              </div>
+            </section>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-paimary-gradient btn-block">Primary</button>
+            </div>
+            <div class="text-center">
+              Don't have an account ?
+              <a (click)="navigateTo($event, 'registration')" href="#" class="link">Create</a>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+    <section class="col-sm-6 align-self-center" id="right-bg">
+      <img src="assets/images/login/mobile_add.png" alt="">
+    </section>
+  </div>
+</div>
