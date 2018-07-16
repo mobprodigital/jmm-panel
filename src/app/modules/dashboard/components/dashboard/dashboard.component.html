@@ -1,6 +1,6 @@
 <section class="row m">
   <div class="col-6">
-    <div class="dash-card shadow-sm bg-grad-danger">
+    <div class="dash-card shadow-sm bg-primary">
       <span class="dash-title">Clicks</span>
       <div class="dash-body row">
         <div class="dash-icon dash-data col">
@@ -23,7 +23,7 @@
 
   </div>
   <div class="col-6">
-    <div class="dash-card shadow-sm bg-gradient-info">
+    <div class="dash-card shadow-sm bg-primary">
       <span class="dash-title">Conversions</span>
       <div class="dash-body row">
         <div class="dash-icon dash-data col">
@@ -48,7 +48,7 @@
 <br>
 <section class="row">
   <div class="col-6">
-    <div class="dash-card shadow-sm bg-gradient-warning">
+    <div class="dash-card shadow-sm bg-primary">
       <span class="dash-title">Impressions</span>
       <div class="dash-body row">
         <div class="dash-icon dash-data col">
@@ -71,7 +71,7 @@
 
   </div>
   <div class="col-6">
-    <div class="dash-card shadow-sm bg-gradient-success">
+    <div class="dash-card shadow-sm bg-primary">
       <span class="dash-title">Payout</span>
       <div class="dash-body row">
         <div class="dash-icon dash-data col">
@@ -108,16 +108,26 @@
       </span>
       <span class="toolbar-saparator"></span>
       <span class="text-right">
+          <button mat-button  [matMenuTriggerFor]="dateMenu"> <mat-icon>arrow_drop_down</mat-icon> Choose date</button>
+          <mat-menu #dateMenu="matMenu">
+            <button mat-menu-item>Today</button>
+            <button mat-menu-item>Yesterday</button>
+            <button mat-menu-item>Last 7 days</button>
+            <button mat-menu-item>Last 30 days</button>
+            <button mat-menu-item>This month</button>
+            <button mat-menu-item>Last month</button>
+            <button (click)="openDatePicker()" mat-menu-item>Custom</button>
+          </mat-menu>
         <button mat-icon-button [matMenuTriggerFor]="pReportMenu">
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #pReportMenu="matMenu">
           <button mat-menu-item>
-            <i class="fas fa-print"></i> 
+            <mat-icon>print</mat-icon>
             <span>Print Chart</span>
           </button>
           <button mat-menu-item>
-            <i class="fas fa-file-download"></i> 
+            <mat-icon>cloud_download</mat-icon>
             <span>Download as image</span>
           </button>
         </mat-menu>

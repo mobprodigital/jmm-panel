@@ -1,6 +1,6 @@
 <mat-toolbar class="container-fluid" color="primary">
   <mat-toolbar-row>
-    <span class="">JMM Panel</span>
+    <span class="panel-name">JMM Panel</span>
     <button type="button" mat-icon-button (click)="drawer.toggle()">
       <i class="fas fa-bars"></i>
     </button>
@@ -19,7 +19,7 @@
       <button mat-button>
         <i class="fas fa-server"></i> Integrations</button>
       <button mat-button [matMenuTriggerFor]="userOptions">
-        <i class="fas fa-caret-down"></i> Gyan Parkash</button>
+        <mat-icon>arrow_drop_down</mat-icon> Gyan Parkash</button>
       <mat-menu #userOptions="matMenu">
         <button mat-menu-item>
           <i class="fas fa-user-tie"></i> Profile</button>

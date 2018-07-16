@@ -86,3 +86,6 @@ a.link {
 .toolbar-saparator{
   flex: 1 1 auto;
 }
+.dash-mat-card-header .mat-card-header-text{
+  width: 100%;
+}

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog} from '@angular/material';
+import { PerformanceReportDatePickerDialogComponent } from '../performance-report-date-picker-dialog/performance-report-date-picker-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,16 +17,26 @@ export class DashboardComponent implements OnInit {
     { data: [15, 38, 10, 19, 56, 88, 40], label: "Revenue" },
     { data: [66, 78, 40, 49, 86, 44, 66], label: "Payout" },
   ];
-  public lineChartOptions:any = {
+  public lineChartOptions: any = {
     responsive: true
   };
   public lineChartLabels: Array<string> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
   public lineChartType: string = 'line';
 
-  constructor() { }
+  constructor(public dialog: MatDialog) {
+    
+   }
 
 
   ngOnInit() {
+  }
+
+
+  openDatePicker(): void {
+    const datePickerDialog = this.dialog.open(PerformanceReportDatePickerDialogComponent);
+    datePickerDialog.afterClosed().subscribe(result => {
+      console.log(result);
+    })
   }
 
 }

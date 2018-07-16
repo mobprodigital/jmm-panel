@@ -23,3 +23,6 @@ a.main-menu-item {
     display: inline-block;
     width: 100%;
 }
+.panel-name{
+    min-width: 220px;
+}

@@ -1,0 +1,24 @@
+<h5 mat-dialog-title>Choose a date range</h5>
+<mat-dialog-content>
+  <section class="row">
+    <div class="col">
+      <mat-form-field>
+        <input matInput [matDatepicker]="fromDate" placeholder="From date">
+        <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+        <mat-datepicker #fromDate></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field>
+        <input matInput [matDatepicker]="toDate" placeholder="To date">
+        <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
+        <mat-datepicker #toDate></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </section>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button [mat-dialog-close]="true">Ok</button>
+</mat-dialog-actions>
