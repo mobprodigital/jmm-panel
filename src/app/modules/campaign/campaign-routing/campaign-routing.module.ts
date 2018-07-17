@@ -9,6 +9,7 @@ import { CampaignCreativesComponent } from '../components/campaign-creatives/cam
 import { PermissionRequestComponent } from '../components/permission-request/permission-request.component';
 import { TrakingLinksComponent } from '../components/traking-links/traking-links.component';
 import { NotFoundComponent } from '../../../not-found/not-found.component';
+import { InfoComponent } from '../components/info/info.component';
 
 
 const campaignRoutes : Routes = [
@@ -31,6 +32,10 @@ const campaignRoutes : Routes = [
       {
         path : 'manage',
         component : ManageComponent
+      },
+      {
+        path : 'info/:id',
+        component : InfoComponent
       },
       {
         path : 'permission-request',

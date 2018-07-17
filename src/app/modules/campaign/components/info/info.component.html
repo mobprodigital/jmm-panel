@@ -1,0 +1,142 @@
+<section class="row">
+  <div class="col-6">
+    <mat-card class="mb-3">
+      <mat-card-header class="mat-card-header-fill-width">
+        <mat-card-title>
+          <span>
+            Campaign Details
+          </span>
+          <span class="toolbar-saparator"></span>
+          <span>
+            <button mat-icon-button [matMenuTriggerFor]="basicDetailsMenu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #basicDetailsMenu="matMenu">
+              <button mat-menu-item>
+
+                <span>Edit</span>
+              </button>
+              <button mat-menu-item>
+                <span>Delete</span>
+              </button>
+              <button mat-menu-item>
+                <span>Copy</span>
+              </button>
+              <button mat-menu-item>
+                <span>Timeline</span>
+              </button>
+            </mat-menu>
+          </span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="table table-light">
+          <tr>
+            <th>Objective</th>
+            <td>Conversions</td>
+          </tr>
+          <tr>
+            <th>Advertiser</th>
+            <td>
+              <a href="#">Sparta Mobile</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Status</th>
+            <td>
+              <span class="badge badge-success">
+                <i class="fas fa-thumbs-up"></i> Success</span>
+            </td>
+          </tr>
+          <tr>
+            <th>Currency</th>
+            <td>USD</td>
+          </tr>
+          <tr>
+            <th>Category</th>
+            <td>cap</td>
+          </tr>
+          <tr>
+            <th>Devices</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th>Preview url</th>
+            <td>
+              <a href="#"></a>preview link</td>
+          </tr>
+          <tr>
+            <th>Url</th>
+            <td>
+              <a href="#">url</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Created</th>
+            <td>July 17, 2018 at 3:29 pm</td>
+          </tr>
+          <tr>
+            <th>Unique Id</th>
+            <td>5b4dbdf1b6920d4f0809e286</td>
+          </tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="mb-3">
+      <mat-card-header class="mat-card-header-fill-width">
+        <mat-card-title>
+          <span>Revenue and Payout</span>
+          <span class="toolbar-saparator"></span>
+          <span>
+            <button mat-raised-button color="primary">
+              <span>Manage payout and goals</span>
+            </button>
+          </span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="table table-light">
+          <thead>
+            <tr>
+              <th>Coverage</th>
+              <th>Revenue</th>
+              <th>Payout</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>All</td>
+            <td>$ 0.1</td>
+            <td>$ 0.01</td>
+          </tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header class="mat-card-header-fill-width">
+        <mat-card-title>
+          <span>
+              Creatives
+          </span>
+          <span class="toolbar-saparator"></span>
+          <span>
+              <button mat-icon-button [matMenuTriggerFor]="creativeMenu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #creativeMenu="matMenu">
+                  <button mat-menu-item>
+                    <span>Upload</span>
+                  </button>
+                  <button mat-menu-item>
+                    <span>Tips</span>
+                  </button>
+                </mat-menu>
+          </span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content></mat-card-content>
+    </mat-card>
+
+  </div>
+</section>

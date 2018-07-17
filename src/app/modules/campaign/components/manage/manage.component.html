@@ -1,3 +1,124 @@
-<p>
-  manage works!
-</p>
+<section class="d-flex">
+  <span>
+    <button type="button" mat-raised-button color="primary">
+      <mat-icon>add</mat-icon>
+      Add new Campaign
+    </button>
+  </span> &nbsp;
+  <span>
+    <button type="button" [matMenuTriggerFor]="bulkOptionMenu" mat-raised-button color="primary">
+      <mat-icon>arrow_drop_down</mat-icon>
+      Bulk options
+    </button>
+    <mat-menu #bulkOptionMenu="matMenu">
+      <button mat-menu-item>Active</button>
+      <button mat-menu-item>Pause</button>
+      <button mat-menu-item>Disable</button>
+      <button mat-menu-item>Delete</button>
+      <button mat-menu-item>Make public</button>
+      <button mat-menu-item>Make private</button>
+      <button mat-menu-item>Make permission required</button>
+    </mat-menu>
+  </span>
+  <span class="toolbar-saparator"></span>
+  <span>
+    <button (click)="togglesearch()" type="button" mat-raised-button color="primary">
+      <mat-icon>search</mat-icon>
+      Search
+    </button>
+  </span>
+</section>
+<br>
+
+<mat-card [hidden]="!showSearch">
+  <mat-card-header>
+    <mat-card-title>Search</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <section class="row">
+      <div class="col">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Id">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Campaign">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Status">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Advertiser">
+        </mat-form-field>
+      </div>
+    </section>
+  </mat-card-content>
+</mat-card>
+<br>
+
+<div class="mat-elevation-z8">
+  <table class="w-100" mat-table [dataSource]="dataSource" matSort>
+
+
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox color="primary" (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox color="primary" (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="id"> ID </th>
+      <td mat-cell *matCellDef="let row">
+        <a (click)="viewCampaignInfo($event, row.id)">{{row.id}}</a>
+      </td>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="campaign">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="campaign"> Campaign </th>
+      <td mat-cell *matCellDef="let row">
+        <a (click)="viewCampaignInfo($event, row.id)" href="#">{{row.campaign}}</a>
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="advertiser">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="advertiser"> Advertiser </th>
+      <td mat-cell *matCellDef="let row"> {{row.advertiser}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="category"> Category </th>
+      <td mat-cell *matCellDef="let row"> {{row.category}} </td>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="status"> Status </th>
+      <td mat-cell *matCellDef="let row"> {{row.status}} </td>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="visibility">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="visibility"> Visibility </th>
+      <td mat-cell *matCellDef="let row"> {{row.visibility}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
