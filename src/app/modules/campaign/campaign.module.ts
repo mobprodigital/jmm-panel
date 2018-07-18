@@ -1,7 +1,7 @@
 // modules
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule, MatButtonModule, MatMenuModule, MatIconModule, MatToolbarModule, MatTableModule, MatFormFieldModule, MatPaginatorModule, MatInputModule, MatCheckboxModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatMenuModule, MatIconModule, MatToolbarModule, MatTableModule, MatFormFieldModule, MatPaginatorModule, MatInputModule, MatCheckboxModule, MatAutocompleteModule, MatSlideToggleModule, MatSelectModule } from '@angular/material';
 
 // components
 import { ManageComponent } from './components/manage/manage.component';
@@ -26,7 +26,10 @@ import { InfoComponent } from './components/info/info.component';
     MatFormFieldModule,
     MatPaginatorModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatAutocompleteModule,
+    MatSlideToggleModule,
+    MatSelectModule
   ],
   declarations: [ManageComponent, TrakingLinksComponent, PermissionRequestComponent, CreateCampaignComponent, CampaignCategoriesComponent, CampaignCreativesComponent, InfoComponent],
   exports: [CampaignRoutingModule]

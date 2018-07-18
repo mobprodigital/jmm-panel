@@ -1,5 +1,6 @@
 <section class="row">
   <div class="col-6">
+    <!-- Campaign Details -->
     <mat-card class="mb-3">
       <mat-card-header class="mat-card-header-fill-width">
         <mat-card-title>
@@ -82,16 +83,21 @@
         </table>
       </mat-card-content>
     </mat-card>
-
+    <!-- Revenue and Payout -->
     <mat-card class="mb-3">
       <mat-card-header class="mat-card-header-fill-width">
         <mat-card-title>
           <span>Revenue and Payout</span>
           <span class="toolbar-saparator"></span>
           <span>
-            <button mat-raised-button color="primary">
-              <span>Manage payout and goals</span>
+            <button mat-icon-button [matMenuTriggerFor]="rAndPMenu">
+              <mat-icon>more_vert</mat-icon>
             </button>
+            <mat-menu #rAndPMenu="matMenu">
+              <button mat-menu-item>
+                <span>Manage payout & goals</span>
+              </button>
+            </mat-menu>
           </span>
         </mat-card-title>
       </mat-card-header>
@@ -113,30 +119,262 @@
       </mat-card-content>
     </mat-card>
 
+    <!-- Creatives -->
     <mat-card>
       <mat-card-header class="mat-card-header-fill-width">
         <mat-card-title>
           <span>
-              Creatives
+            Creatives
           </span>
           <span class="toolbar-saparator"></span>
           <span>
-              <button mat-icon-button [matMenuTriggerFor]="creativeMenu">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #creativeMenu="matMenu">
-                  <button mat-menu-item>
-                    <span>Upload</span>
-                  </button>
-                  <button mat-menu-item>
-                    <span>Tips</span>
-                  </button>
-                </mat-menu>
+            <button mat-icon-button [matMenuTriggerFor]="creativeMenu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #creativeMenu="matMenu">
+              <button mat-menu-item>
+                <span>Upload</span>
+              </button>
+              <button mat-menu-item>
+                <span>Tips</span>
+              </button>
+            </mat-menu>
           </span>
         </mat-card-title>
       </mat-card-header>
       <mat-card-content></mat-card-content>
     </mat-card>
 
+    <!-- Conversion tracking -->
+    <mat-card class="mb-3">
+      <mat-card-header class="mat-card-header-fill-width">
+        <mat-card-title>
+          <span>Conversion tracking</span>
+          <span class="toolbar-saparator"></span>
+          <span>
+            <button mat-icon-button [matMenuTriggerFor]="settingMenu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #settingMenu="matMenu">
+              <button mat-menu-item>
+                <span>Tracking Parameter</span>
+              </button>
+              <button mat-menu-item>
+                <span>Tracking Value</span>
+              </button>
+            </mat-menu>
+          </span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="w-100 mb-3">
+          <mat-select placeholder="Conversion type">
+            <mat-option value="postbavk1">postback 1</mat-option>
+            <mat-option value="postbavk2">postback 2</mat-option>
+            <mat-option value="postbavk3">postback 3</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="w-100 mb-3">
+          <textarea placeholder="postback url" matInput>http://www.demopostback.com</textarea>
+        </mat-form-field>
+        <div class="mb-3">
+          <mat-checkbox class="mr-2" color="primary">Pass macros</mat-checkbox>
+          <mat-checkbox class="mr-2" color="primary">Upcells</mat-checkbox>
+          <mat-checkbox class="mr-2" color="primary">Add goal value</mat-checkbox>
+        </div>
+        <div class="mb-3">
+          <hr>
+          <label>Macros</label>
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field class="w-100">
+                <input type="text" name="macro" placeholder="Macro 1" matInput />
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field class="w-100">
+                <input type="text" name="macro" placeholder="Macro 2" matInput />
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field class="w-100">
+                <input type="text" name="macro" placeholder="Macro 3" matInput />
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field class="w-100">
+                <input type="text" name="macro" placeholder="Macro 4" matInput />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button type="button" mat-raised-button color="primary">Update</button>
+        </div>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+  <div class="col-6">
+    <!-- Tracking link -->
+    <mat-card class="mb-3">
+      <mat-card-header class="mat-card-header-fill-width">
+        <mat-card-title>
+          <span>Tracking link</span>
+          <span class="toolbar-saparator"></span>
+          <span>
+            <button mat-icon-button [matMenuTriggerFor]="trackingLinkMenu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #trackingLinkMenu="matMenu">
+              <button mat-menu-item>
+                <span>Performance report</span>
+              </button>
+              <button mat-menu-item>
+                <span>Manage links</span>
+              </button>
+            </mat-menu>
+          </span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="w-100 mb-4">
+          <input type="search" placeholder="Tracking link" aria-label="Number" matInput [matAutocomplete]="trackLink">
+          <mat-hint>To generate a tracking link, select an affiliate from below. Tracking links records click for reporting.</mat-hint>
+          <mat-autocomplete #trackLink="matAutocomplete">
+            <mat-option *ngFor="let option of trackingLinks" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="w-100 mb-3">
+          <textarea matInput placeholder="Generated Link"></textarea>
+        </mat-form-field>
+
+        <div class="mb-4">
+          <mat-slide-toggle class="mb-2" color="primary" name="trackLinkCheckBox">Add SubIDs</mat-slide-toggle>
+          <br>
+          <mat-slide-toggle class="mb-2" color="primary" name="trackLinkCheckBox">Add Source (Sub Publisher)</mat-slide-toggle>
+          <br>
+          <mat-slide-toggle class="mb-2" color="primary" name="trackLinkCheckBox">Add DeepLink</mat-slide-toggle>
+          <br>
+          <mat-slide-toggle class="mb-2" color="primary" name="trackLinkCheckBox">Impression Pixel</mat-slide-toggle>
+          <br>
+          <mat-slide-toggle class="mb-2" color="primary" name="trackLinkCheckBox">Change Tracking Domain</mat-slide-toggle>
+          <br>
+        </div>
+        <hr>
+        <mat-form-field class="w-100">
+          <mat-select placeholder="Change tracking domain">
+            <mat-option value="domain 1">domain 1</mat-option>
+            <mat-option value="domain 2">domain 2</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <input matInput name="impressionPixel" placeholder="Impression pixel" />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <input matInput name="source" placeholder="Source" />
+        </mat-form-field>
+        <label>Sub-IDs</label>
+        <section class="row mb-3">
+          <div class="col-6">
+            <mat-form-field class="w-100">
+              <input matInput name="sub" placeholder="sub 1" />
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field class="w-100">
+              <input matInput name="sub" placeholder="sub 2" />
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field class="w-100">
+              <input matInput name="sub" placeholder="sub 3" />
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field class="w-100">
+              <input matInput name="sub" placeholder="sub 4" />
+            </mat-form-field>
+          </div>
+        </section>
+
+        <mat-form-field class="w-100 mb-3">
+          <input matInput name="deeplink" placeholder="Deeplink" />
+        </mat-form-field>
+
+        <div>
+          <button mat-raised-button color="primary">Update</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Restrictions -->
+    <mat-card class="mb-3">
+      <mat-card-header class="mat-card-header-fill-width">
+        <mat-card-title>
+          <span>Restrictions</span>
+          <span class="toolbar-saparator"></span>
+          <span>
+            <button mat-icon-button [matMenuTriggerFor]="restrictionsMenu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #restrictionsMenu="matMenu">
+              <button mat-menu-item>
+                <span>Edit</span>
+              </button>
+            </mat-menu>
+          </span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="table table-light">
+          <tr>
+            <th>Advanced roules</th>
+            <td>Enabled
+              <sup class="badge badge-info">New</sup>
+            </td>
+          </tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Settings -->
+    <mat-card class="mb-3">
+      <mat-card-header class="mat-card-header-fill-width">
+        <mat-card-title>
+          <span>Settings</span>
+          <span class="toolbar-saparator"></span>
+          <span>
+            <button mat-icon-button [matMenuTriggerFor]="settMenu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #settMenu="matMenu">
+              <button mat-menu-item>
+                <span>Edit</span>
+              </button>
+            </mat-menu>
+          </span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="table table-light">
+          <tr>
+            <th>Display Advertiser</th>
+            <td>1</td>
+          </tr>
+          <tr>
+            <th>Visibility</th>
+            <td>public</td>
+          </tr>
+          <tr>
+            <th>Cap</th>
+            <td>Not Set</td>
+          </tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
   </div>
 </section>
