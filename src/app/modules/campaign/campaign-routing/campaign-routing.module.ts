@@ -47,7 +47,7 @@ const campaignRoutes : Routes = [
       },
       {
         path : '',
-        component : TrakingLinksComponent
+        component : ManageComponent
       },
       {
         path : '**',

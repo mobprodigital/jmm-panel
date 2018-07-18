@@ -7,6 +7,10 @@ import { AppComponent } from '../app.component';
 
 let appRoutes: Routes = [
   {
+    path: 'campaign',
+    loadChildren : '../modules/campaign/campaign.module#CampaignModule'
+  },
+  {
     path: '',
     component: AppComponent,
   },
