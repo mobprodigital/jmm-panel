@@ -60,6 +60,6 @@ export class ResetPasswordComponent implements OnInit {
    */
   public navigateTo(ev: MouseEvent, path: string): void {
     ev.preventDefault();
-    this.router.navigateByUrl('/' + path);
+    this.router.navigateByUrl('/user-account/' + path);
   }
 }

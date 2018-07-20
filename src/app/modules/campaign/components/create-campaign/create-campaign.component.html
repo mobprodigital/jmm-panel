@@ -1,3 +1,112 @@
-<p>
-  create-campaign works!
-</p>
+<section class="row">
+  <div class="col-6">
+    <!-- basic info -->
+    <mat-card class="mb-3">
+      <mat-card-header>
+        <mat-card-title>Basic Info</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- choose an objective -->
+        <div class="form-group">
+          <label class="form-label">Choose an Objective</label>
+          <div>
+            <mat-radio-group>
+              <mat-radio-button color="primary" class="mr-2" value="conversion">Conversion</mat-radio-button>
+              <mat-radio-button color="primary" class="mr-2" value="sale">Sale</mat-radio-button>
+              <mat-radio-button color="primary" class="mr-2" value="appinstalls">App installs</mat-radio-button>
+              <mat-radio-button color="primary" class="mr-2" value="impressions">Impressions</mat-radio-button>
+              <mat-radio-button color="primary" class="mr-2" value="clicks">Clicks</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+        <!-- select advertiser -->
+        <mat-form-field class=" form-group">
+          <mat-select placeholder="Select advertiser">
+            <mat-option value="advertiser1">advertiser1</mat-option>
+            <mat-option value="advertiser2">advertiser2</mat-option>
+            <mat-option value="advertiser2">advertiser3</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- title -->
+        <mat-form-field class=" form-group">
+          <input type="text" placeholder="Title" matInput />
+        </mat-form-field>
+
+        <!-- preview url -->
+        <mat-form-field class="form-group">
+          <input type="url" placeholder="Preview url" matInput />
+          <mat-hint>Link to preview landing page which publishers can see</mat-hint>
+        </mat-form-field>
+
+        <!-- preview url -->
+        <mat-form-field class="form-group">
+          <textarea placeholder="Default campaign url" matInput></textarea>
+          <mat-hint>The campaign URL where traffic will redirect to. Optional variabled can be used in URL.</mat-hint>
+        </mat-form-field>
+      </mat-card-content>
+
+      <!-- url tokens -->
+      <div class="form-group">
+        <label class="form-label">Most used url tokens</label>
+        <mat-chip-list>
+          <mat-chip>&#123;click_id&#125;</mat-chip>
+          <mat-chip>&#123;campaign_id&#125;</mat-chip>
+          <mat-chip>&#123;aff_id&#125;</mat-chip>
+          <mat-chip>&#123;country_id&#125;</mat-chip>
+        </mat-chip-list>
+      </div>
+
+      <hr>
+
+      <!-- campaign category -->
+      <mat-form-field class="form-group">
+        <input type="text" placeholder="Campaign category" matInput [matAutocomplete]="acmCategory">
+        <mat-autocomplete #acmCategory="matAutocomplete">
+          <mat-option value="option1">option 1</mat-option>
+          <mat-option value="option2">option 2</mat-option>
+          <mat-option value="option3">option 3</mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <!-- devices -->
+      <mat-form-field class="form-group">
+        <mat-select placeholder="Device" multiple>
+          <mat-option value="all">All</mat-option>
+          <mat-option value="mobile">Mobile</mat-option>
+          <mat-option value="tab">Tablet</mat-option>
+          <mat-option value="desktop">Desktop</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- notes -->
+      <mat-form-field class="form-group">
+        <textarea placeholder="Notes" matInput></textarea>
+      </mat-form-field>
+
+    </mat-card>
+
+    <!-- Revenue and Payout -->
+    <mat-card class="mb-3 ">
+      <mat-card-header>
+        <mat-card-title>Revenue and payout</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+
+        <!-- Currency -->
+        <mat-form-field class="form-group">
+          <input [formControl]="currencyControl" type="text" placeholder="Currency" matInput [matAutocomplete]="currencyAuto">
+          <mat-autocomplete #currencyAuto="matAutocomplete">
+            <mat-option *ngFor="let curr of filteredOptions | async" [value]="curr">{{curr}}</mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <!-- Revenue -->
+        <mat-form-field class="form-group">
+          <input type="text" placeholder="Revenue" matInput />
+        </mat-form-field>
+
+       
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>

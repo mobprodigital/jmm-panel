@@ -1,7 +1,7 @@
 // modules
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule, MatButtonModule, MatMenuModule, MatIconModule, MatToolbarModule, MatTableModule, MatFormFieldModule, MatPaginatorModule, MatInputModule, MatCheckboxModule, MatAutocompleteModule, MatSlideToggleModule, MatSelectModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatMenuModule, MatIconModule, MatToolbarModule, MatTableModule, MatFormFieldModule, MatPaginatorModule, MatInputModule, MatCheckboxModule, MatAutocompleteModule, MatSlideToggleModule, MatSelectModule, MatRadioModule, MatChipsModule } from '@angular/material';
 
 // components
 import { ManageComponent } from './components/manage/manage.component';
@@ -12,6 +12,7 @@ import { CampaignCategoriesComponent } from './components/campaign-categories/ca
 import { CampaignCreativesComponent } from './components/campaign-creatives/campaign-creatives.component';
 import { CampaignRoutingModule } from './campaign-routing/campaign-routing.module';
 import { InfoComponent } from './components/info/info.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -29,7 +30,10 @@ import { InfoComponent } from './components/info/info.component';
     MatCheckboxModule,
     MatAutocompleteModule,
     MatSlideToggleModule,
-    MatSelectModule
+    MatSelectModule,
+    MatRadioModule,
+    MatChipsModule,
+    ReactiveFormsModule
   ],
   declarations: [ManageComponent, TrakingLinksComponent, PermissionRequestComponent, CreateCampaignComponent, CampaignCategoriesComponent, CampaignCreativesComponent, InfoComponent],
   exports: [CampaignRoutingModule]

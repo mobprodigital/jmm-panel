@@ -10,6 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 
 import { AppRoutingModule } from "./app-routing/app-routing.module";
+import { AjaxService } from './services/ajax/ajax.service';
 
 // hello
 
@@ -25,6 +26,6 @@ import { AppRoutingModule } from "./app-routing/app-routing.module";
     CoreModule,
     AppRoutingModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

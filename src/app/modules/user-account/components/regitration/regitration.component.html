@@ -1,6 +1,6 @@
 <div class="login-container container-fluid">
   <div class="row">
-    <section class="col-sm-6 align-self-center">
+    <section class="col-sm-6 form-container align-self-center">
       <div class="row align-items-center justify-content-center">
         <div class="col-9">
           <img class="login-logo" src="assets/images/login/logo.png" alt="">
@@ -11,85 +11,112 @@
           <br>
 
           <form novalidate (ngSubmit)="registerUser()" [formGroup]="rgtFormGroup" action="">
+            <fieldset [disabled]="registrationFormDisabled">
 
-            <div class="row">
-              <section class="form-group col-sm">
-                <label class="form-label" for="name">Name *</label>
-                <input type="text" placeholder="e.g. John Doe" formControlName="name" id="name" class="form-control " />
-                <div *ngIf="rgtFormGroup.get('name')?.invalid && (rgtFormGroup.get('name')?.touched || rgtFormGroup.get('name')?.dirty)">
-                  <span class="err-msg">Please enter name</span>
-                </div>
-              </section>
 
-              <section class="form-group col-sm">
-                <label class="form-label" for="email">Email *</label>
-                <input type="email" placeholder="e.g. someone@somedomain" formControlName="email" id="email" class="form-control " />
-                <div *ngIf="rgtFormGroup.get('email')?.invalid && (rgtFormGroup.get('email')?.touched || rgtFormGroup.get('email')?.dirty)">
-                  <span class="err-msg">Please enter valid email</span>
-                </div>
-              </section>
-            </div> <!-- row -->
+              <div class="row">
+                <section class="form-group col-6">
+                  <label class="form-label" for="Fname">First Name *</label>
+                  <input type="text" placeholder="e.g. John" formControlName="Fname" id="Fname" class="form-control " />
+                  <div *ngIf="rgtFormGroup.get('Fname')?.invalid && (rgtFormGroup.get('Fname')?.touched || rgtFormGroup.get('Fname')?.dirty)">
+                    <span class="err-msg">Please enter first name</span>
+                  </div>
+                </section>
+                <section class="form-group col-6">
+                  <label class="form-label" for="Lname">Last Name</label>
+                  <input type="text" placeholder="e.g. Doe" formControlName="Lname" id="Lname" class="form-control " />
+                </section>
 
-            <div class="row">
-              <section class="form-group col-sm">
-                <label class="form-label" for="companyName">Company name *</label>
-                <input type="text" placeholder="e.g. Jack Morris Media" formControlName="companyName" id="companyName" class="form-control " />
-                <div *ngIf="rgtFormGroup.get('companyName')?.invalid && (rgtFormGroup.get('companyName')?.touched || rgtFormGroup.get('companyName')?.dirty)">
-                  <span class="err-msg">Please enter company name</span>
-                </div>
-              </section>
+                <section class="form-group col-6">
+                  <label class="form-label" for="Email">Email *</label>
+                  <input type="email" placeholder="e.g. someone@somedomain" formControlName="EmlID" id="Email" class="form-control " />
+                  <div *ngIf="rgtFormGroup.get('EmlID')?.invalid && (rgtFormGroup.get('EmlID')?.touched || rgtFormGroup.get('EmlID')?.dirty)">
+                    <span class="err-msg">Please enter valid email</span>
+                  </div>
+                </section>
 
-              <section class="form-group col-sm">
-                <label class="form-label" for="websiteUrl">Website url</label>
-                <input type="url" placeholder="e.g. http://somedomain.com" formControlName="websiteUrl" id="websiteUrl" class="form-control " />
-                <div *ngIf="rgtFormGroup.get('websiteUrl')?.invalid && (rgtFormGroup.get('websiteUrl')?.touched || rgtFormGroup.get('websiteUrl')?.dirty)">
-                  <span class="err-msg">Please enter valid url</span>
-                </div>
-              </section>
-            </div> <!-- row -->
+                <section class="form-group col-6">
+                  <label class="form-label" for="RegTyp">Registration type *</label>
+                  <mat-select class="form-control" (selectionChange)="setPrgCode()" placeholder="e.g. Employee" formControlName="RegTyp" id="RegTyp">
+                    <mat-option *ngFor="let regtType of regtTypeList" [value]="regtType.value">
+                      {{regtType.name}}
+                    </mat-option>
+                  </mat-select>
+                  <div *ngIf="rgtFormGroup.get('RegTyp')?.invalid && (rgtFormGroup.get('RegTyp')?.touched || rgtFormGroup.get('RegTyp')?.dirty)">
+                    <span class="err-msg">Please choose registration type</span>
+                  </div>
+                </section>
 
-            <div class="row">
-              <section class="form-group col-sm">
-                <label class="form-label" for="skypeName">Skype name *</label>
-                <input type="text" placeholder="e.g. live:myskypename" formControlName="skypeName" id="skypeName" class="form-control " />
-                <div *ngIf="rgtFormGroup.get('skypeName')?.invalid && (rgtFormGroup.get('skypeName')?.touched || rgtFormGroup.get('skypeName')?.dirty)">
-                  <span class="err-msg">Please enter skype name</span>
-                </div>
-              </section>
+                <section class="form-group col-6">
+                  <label class="form-label" for="Paswd">Password *</label>
+                  <input type="password" placeholder="e.g. my secret password" formControlName="Paswd" id="Paswd" class="form-control " />
+                  <div *ngIf="rgtFormGroup.get('Paswd')?.invalid && (rgtFormGroup.get('Paswd')?.touched || rgtFormGroup.get('Paswd')?.dirty)">
+                    <span *ngIf="rgtFormGroup.get('Paswd')?.hasError('required')" class="err-msg">Please enter password</span>
+                    <span *ngIf="rgtFormGroup.get('Paswd')?.hasError('minlength')" class="err-msg">Password should be minimum of 5</span>
+                    <span *ngIf="rgtFormGroup.get('Paswd')?.hasError('maxlength')" class="err-msg">Password should be minimum of 8</span>
+                  </div>
+                </section>
+                <input type="hidden" value="PrgCode" />
 
-              <section class="form-group col-sm">
-                <label class="form-label" for="country">Country *</label>
-                <mat-select class="form-control" placeholder="e.g. India" formControlName="country" id="country">
-                    <mat-option *ngFor="let option of countryList" [value]="option">
+                <section class="form-group col-6">
+                  <label class="form-label" for="CompanyName">Company name *</label>
+                  <input type="text" placeholder="e.g. Jack Morris Media" formControlName="CompName" id="CompanyName" class="form-control "
+                  />
+                  <div *ngIf="rgtFormGroup.get('CompName')?.invalid && (rgtFormGroup.get('CompName')?.touched || rgtFormGroup.get('CompName')?.dirty)">
+                    <span class="err-msg">Please enter company name</span>
+                  </div>
+                </section>
+
+                <section class="form-group col-6">
+                  <label class="form-label" for="WebsiteUrl">Website url</label>
+                  <input type="url" placeholder="e.g. http://somedomain.com" formControlName="CmpDomain" id="WebsiteUrl" class="form-control "
+                  />
+                  <div *ngIf="rgtFormGroup.get('CmpDomain')?.invalid && (rgtFormGroup.get('CmpDomain')?.touched || rgtFormGroup.get('CmpDomain')?.dirty)">
+                    <span class="err-msg">Please enter valid url</span>
+                  </div>
+                </section>
+
+                <section class="form-group col-6">
+                  <label class="form-label" for="SkypeName">Skype name *</label>
+                  <input type="text" placeholder="e.g. live:mySkypename" formControlName="SkypeName" id="SkypeName" class="form-control " />
+                  <div *ngIf="rgtFormGroup.get('SkypeName')?.invalid && (rgtFormGroup.get('SkypeName')?.touched || rgtFormGroup.get('SkypeName')?.dirty)">
+                    <span class="err-msg">Please enter skype name</span>
+                  </div>
+                </section>
+
+                <section class="form-group col-6">
+                  <label class="form-label" for="Country">Country *</label>
+                  <mat-select class="form-control" placeholder="e.g. India" formControlName="Country" id="Country">
+                    <mat-option *ngFor="let option of CountryList" [value]="option">
                       {{option}}
                     </mat-option>
                   </mat-select>
-                <div *ngIf="rgtFormGroup.get('country')?.invalid && (rgtFormGroup.get('country')?.touched || rgtFormGroup.get('country')?.dirty)">
-                  <span class="err-msg">Please enter country</span>
-                </div>
-              </section>
-            </div> <!-- row -->
+                  <div *ngIf="rgtFormGroup.get('Country')?.invalid && (rgtFormGroup.get('Country')?.touched || rgtFormGroup.get('Country')?.dirty)">
+                    <span class="err-msg">Please enter country</span>
+                  </div>
+                </section>
 
-            <div class="row">
-              <section class="form-group col-sm">
-                <label class="form-label" for="phone">Phone *</label>
-                <input type="tel" placeholder="e.g. 98XXXXXXXX" formControlName="phone" id="phone" class="form-control " />
-                <div *ngIf="rgtFormGroup.get('phone')?.invalid && (rgtFormGroup.get('phone')?.touched || rgtFormGroup.get('phone')?.dirty)">
-                  <span *ngIf="rgtFormGroup.get('phone')?.hasError('required')" class="err-msg">Please enter phone</span>
-                  <span *ngIf="rgtFormGroup.get('phone')?.hasError('minlength')" class="err-msg">Please enter 10 digits phone</span>
-                  <span *ngIf="rgtFormGroup.get('phone')?.hasError('pattern')" class="err-msg">Please enter 10 digits only</span>
-                </div>
-              </section>
-            </div> <!-- row -->
+                <section class="form-group col-6">
+                  <label class="form-label" for="Phone">Phone *</label>
+                  <input type="tel" placeholder="e.g. 98XXXXXXXX" formControlName="Phone" id="Phone" class="form-control " />
+                  <div *ngIf="rgtFormGroup.get('Phone')?.invalid && (rgtFormGroup.get('Phone')?.touched || rgtFormGroup.get('Phone')?.dirty)">
+                    <span *ngIf="rgtFormGroup.get('Phone')?.hasError('required')" class="err-msg">Please enter Phone</span>
+                    <span *ngIf="rgtFormGroup.get('Phone')?.hasError('minlength')" class="err-msg">Please enter 10 digits Phone</span>
+                    <span *ngIf="rgtFormGroup.get('Phone')?.hasError('pattern')" class="err-msg">Please enter 10 digits only</span>
+                  </div>
+                </section>
+              </div>
+              <!-- row -->
 
-           
-            <div class="form-group">
-              <button type="submit"  class="btn btn-primary btn-paimary-gradient btn-block">Register</button>
-            </div>
-            <div class="text-center">
-              Already have an account ?
-              <a (click)="goToLogin($event)" href="#" class="link">login Here</a>
-            </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-paimary-gradient btn-block">Register</button>
+              </div>
+              <div class="text-center">
+                Already have an account ?
+                <a (click)="goToLogin($event)" href="#" class="link">login Here</a>
+              </div>
+            </fieldset>
           </form>
 
         </div>
